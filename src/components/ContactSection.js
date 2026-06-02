@@ -1,5 +1,17 @@
 "use client";
 
+function renderRippleLetters(text, prefix) {
+  return text.split("").map((ch, index) => (
+    <span
+      key={`${prefix}-${index}`}
+      className="ripple-letter"
+      style={{ ["--i"]: index }}
+    >
+      {ch === " " ? "\u00A0" : ch}
+    </span>
+  ));
+}
+
 export default function ContactSection() {
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -10,7 +22,7 @@ export default function ContactSection() {
   return (
     <section id="contact" className="sp-section sp-contact" aria-label="Contact">
       <div className="sp-section-inner">
-        <h2 className="sp-section-title">Contact</h2>
+        <h2 className="sp-section-title wave-title">{renderRippleLetters("Contact", "contact")}</h2>
         <p className="sp-section-subtitle">Let’s connect — I’d love to hear from you.</p>
 
         <div className="sp-contact-grid">

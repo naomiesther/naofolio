@@ -2,6 +2,18 @@
 
 import Image from "next/image";
 
+function renderRippleLetters(text, prefix) {
+  return text.split("").map((ch, index) => (
+    <span
+      key={`${prefix}-${index}`}
+      className="ripple-letter"
+      style={{ ["--i"]: index }}
+    >
+      {ch === " " ? "\u00A0" : ch}
+    </span>
+  ));
+}
+
 export default function ProjectsSection() {
   return (
     <section id="projects" className="sp-section sp-projects" aria-label="Projects">
@@ -13,7 +25,7 @@ export default function ProjectsSection() {
       </div>
 
       <div className="sp-section-inner">
-        <h2 className="sp-section-title">Projects</h2>
+        <h2 className="sp-section-title wave-title">{renderRippleLetters("Projects", "projects")}</h2>
         <p className="sp-section-subtitle">A few things I have built.</p>
 
         <div className="sp-project-grid">
@@ -22,19 +34,19 @@ export default function ProjectsSection() {
               title: "USLS Basic Education Unit 2026",
               desc: "Developed and refined the USLS Basic Education Unit webpage for improved accessibility and presentation.",
               link: "https://www.usls.edu.ph/beu",
-              image: "https://www.usls.edu.ph/beu/og-image.jpg",
+              image: "/assets/images/projects/USLS-BEU.png",
             },
             {
               title: "USLS Enrollment Steps 2026",
               desc: "Designed and organized the USLS Enrollment Steps webpage to provide a clear and user-friendly enrollment guide.",
               link: "https://www.usls.edu.ph/esteps",
-              image: "https://www.usls.edu.ph/esteps/og-image.jpg",
+              image: "/assets/images/projects/USLS-ESTEPS.png",
             },
             {
               title: "Women Who Lead: Lasallian Spotlight 2026",
               desc: "Created the USLS Women Who Lead: Lasallian Spotlight newsletter, highlighting women leaders within the community.",
               link: "https://www.usls.edu.ph/womenwholead/",
-              image: "https://www.usls.edu.ph/womenwholead/og-image.jpg",
+              image: "/assets/images/projects/USLS-WWL.png",
             },
           ].map((p) => (
             <article key={p.title} className="sp-project-card">
