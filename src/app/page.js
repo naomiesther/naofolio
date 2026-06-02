@@ -13,6 +13,9 @@ export default function Home() {
       <main className="sp-main">
         <HeroSection />
 
+        {/* Divider between hero and about */}
+        <div className="about-divider" aria-hidden="true" />
+
         <section id="about" className="sp-about" aria-label="About">
           <AboutSection />
         </section>

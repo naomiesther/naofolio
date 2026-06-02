@@ -234,9 +234,6 @@ export default function AboutSection() {
           </div>
         </div>
 
-        {/* Divider between intro and folder cards */}
-        <div className="about-divider" aria-hidden="true" />
-
         <div className="about-folder-section" ref={folderSectionRef}>
           <div className="about-folder-header">
             <p className="about-folder-kicker">more about me!</p>
