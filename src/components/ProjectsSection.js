@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 export default function ProjectsSection() {
   return (
     <section id="projects" className="sp-section sp-projects" aria-label="Projects">
@@ -17,27 +19,41 @@ export default function ProjectsSection() {
         <div className="sp-project-grid">
           {[
             {
-              title: "Project One",
-              desc: "A beautiful UI/UX design and development project showcasing modern design principles.",
+              title: "USLS Basic Education Unit 2026",
+              desc: "Developed and refined the USLS Basic Education Unit webpage for improved accessibility and presentation.",
+              link: "https://www.usls.edu.ph/beu",
+              image: "https://www.usls.edu.ph/beu/og-image.jpg",
             },
             {
-              title: "Project Two",
-              desc: "An interactive web application built with HTML, CSS, and JavaScript for enhanced user engagement.",
+              title: "USLS Enrollment Steps 2026",
+              desc: "Designed and organized the USLS Enrollment Steps webpage to provide a clear and user-friendly enrollment guide.",
+              link: "https://www.usls.edu.ph/esteps",
+              image: "https://www.usls.edu.ph/esteps/og-image.jpg",
             },
             {
-              title: "Project Three",
-              desc: "A comprehensive branding and web design project that combines creativity with functionality.",
-            },
-            {
-              title: "Project Four",
-              desc: "A responsive mobile-first design solution that prioritizes user experience across all devices.",
+              title: "Women Who Lead: Lasallian Spotlight 2026",
+              desc: "Created the USLS Women Who Lead: Lasallian Spotlight newsletter, highlighting women leaders within the community.",
+              link: "https://www.usls.edu.ph/womenwholead/",
+              image: "https://www.usls.edu.ph/womenwholead/og-image.jpg",
             },
           ].map((p) => (
             <article key={p.title} className="sp-project-card">
-              <div className="sp-project-thumb" aria-hidden="true" />
+              <a href={p.link} target="_blank" rel="noopener noreferrer" className="sp-project-thumb-link">
+                <div className="sp-project-thumb">
+                  <Image
+                    src={p.image}
+                    alt={p.title}
+                    fill
+                    className="sp-project-image"
+                    onError={(e) => {
+                      e.currentTarget.style.display = "none";
+                    }}
+                  />
+                </div>
+              </a>
               <h3 className="sp-project-title">{p.title}</h3>
               <p className="sp-project-desc">{p.desc}</p>
-              <a className="sp-project-link" href="#" aria-label={`View ${p.title}`}>
+              <a className="sp-project-link" href={p.link} target="_blank" rel="noopener noreferrer" aria-label={`View ${p.title}`}>
                 View <span aria-hidden="true">→</span>
               </a>
             </article>
