@@ -122,12 +122,20 @@ export default function AboutSection() {
     const section = sectionRef.current;
     if (!section) return;
 
-    const introTimer = window.setTimeout(() => {
-      section.classList.add("is-intro-ready");
-    }, 80);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          section.classList.add("is-intro-ready");
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.25, rootMargin: "0px 0px -10% 0px" }
+    );
 
-    return () => window.clearTimeout(introTimer);
+    observer.observe(section);
+    return () => observer.disconnect();
   }, []);
+
 
   useEffect(() => {
     const folderSection = folderSectionRef.current;
@@ -238,6 +246,7 @@ export default function AboutSection() {
         </div>
 
         <div className="about-folder-section" ref={folderSectionRef}>
+
           <div className="about-folder-header">
             <p className="about-folder-kicker">more about me!</p>
             <h2 className="about-folder-title" aria-label="education, experience, expertise">

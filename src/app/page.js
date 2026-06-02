@@ -13,18 +13,22 @@ export default function Home() {
       <main className="sp-main">
         <HeroSection />
 
-        {/* Divider between hero and about */}
-        <div className="about-divider" aria-hidden="true" />
+        {/* Pastel green divider between Hero and About */}
+        <div className="stripe-divider stripe-divider--hero-about" aria-hidden="true" />
 
         <section id="about" className="sp-about" aria-label="About">
           <AboutSection />
         </section>
 
-        <ProjectsSection />
+        {/* Pastel green divider between About and Projects */}
+        <div className="stripe-divider stripe-divider--about-projects" aria-hidden="true" />
 
-        <section className="sp-section sp-contact" id="contact" aria-label="Contact">
-          <ContactSection />
-        </section>
+<ProjectsSection />
+
+        {/* Divider between Projects and Gallery */}
+        <div className="stripe-divider stripe-divider--about-projects" aria-hidden="true" />
+
+        <ContactSection />
       </main>
 
       <SiteFooter />
