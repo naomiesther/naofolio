@@ -1307,7 +1307,7 @@ img {
 ========================================== */
 .about-section {
   position: relative;
-  background: transparent;
+  background: var(--light-bg);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -1328,9 +1328,6 @@ img {
   padding: 6rem 4rem 3rem;
   gap: 1rem;
   max-width: 1400px;
-  background: var(--light-bg);
-  width: 100%;
-  margin: 0 auto;
   margin: 0 auto;
   width: 100%;
 }
@@ -1694,9 +1691,13 @@ img {
    ABOUT FOLDER CARDS
 ========================================== */
 .about-folder-section {
-  width: 100%;
-  max-width: none;
-  margin: 0;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  background: #FFCCDD;
   padding: 3rem 4rem 5rem;
   overflow: visible;
   opacity: 0;
@@ -1706,9 +1707,6 @@ img {
     opacity 900ms cubic-bezier(0.22, 1, 0.36, 1),
     transform 900ms cubic-bezier(0.22, 1, 0.36, 1),
     filter 900ms cubic-bezier(0.22, 1, 0.36, 1);
-  background: #FFCCDD;
-  border-radius: 0;
-  margin-top: 2rem;
 }
 
 .about-folder-section.is-visible {
@@ -1731,6 +1729,10 @@ img {
     opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
     transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
   transition-delay: 140ms;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 4rem;
 }
 
 .about-folder-section.is-visible .about-folder-header {
