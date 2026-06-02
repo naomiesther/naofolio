@@ -1692,10 +1692,6 @@ img {
 .about-folder-section {
   width: 100vw;
   position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
   background: #ffe1eb;
   padding: 3rem 4rem 5rem;
   overflow: visible;
@@ -1713,10 +1709,6 @@ img {
   transform: translateY(0);
   filter: blur(0);
 }
-
-
-
-
 
 
 .about-folder-header {
@@ -1775,6 +1767,8 @@ img {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.25rem;
   overflow: visible;
+  max-width: 1300px;
+  margin: 0 auto;
 }
 
 
