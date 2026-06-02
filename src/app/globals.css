@@ -815,6 +815,93 @@ img {
   }
 }
 
+  /* ====== Final mobile safety overrides (force stacking & image size) ======
+     Purpose: ensure the hero, folders, image, and footer stack correctly on
+     all mobile widths (<=767px) and override any earlier rules that conflict.
+  ======================================================================= */
+  @media (max-width: 767px) {
+    .landing-content {
+      display: flex !important;
+      flex-wrap: wrap !important;
+      justify-content: center !important;
+      align-items: flex-start !important;
+    }
+
+    .landing-bg-text-bg {
+      order: 1 !important;
+      width: 100% !important;
+      margin: 0 0 10px !important;
+      padding: 0 !important;
+      position: static !important;
+      transform: none !important;
+      text-align: center !important;
+    }
+
+    /* Place folders directly below the heading in a single row of 3 */
+    .folder-about,
+    .folder-projects,
+    .folder-contact {
+      position: static !important;
+      order: 2 !important;
+      flex: 0 0 33.3333% !important;
+      width: 33.3333% !important;
+      max-width: none !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      left: auto !important;
+      right: auto !important;
+      top: auto !important;
+      bottom: auto !important;
+      transform: none !important;
+      animation: none !important;
+      display: flex !important;
+      justify-content: center !important;
+      align-items: flex-start !important;
+    }
+
+    .floating-folder {
+      width: 100% !important;
+      display: flex !important;
+      justify-content: center !important;
+      touch-action: manipulation !important;
+      -webkit-tap-highlight-color: transparent !important;
+    }
+
+    .floating-folder-inner {
+      gap: 0.08rem !important;
+    }
+
+    .floating-folder img {
+      width: clamp(70px, 18vw, 96px) !important;
+      max-width: 100% !important;
+    }
+
+    .floating-folder p {
+      font-size: 0.74rem !important;
+    }
+
+    /* Ensure tap only scales (no rotation) */
+    .floating-folder:active { transform: none !important; }
+    .floating-folder:active .floating-folder-inner { animation: folderClickMobile 180ms ease-out !important; }
+
+    /* Reduce main image so it doesn't dominate the viewport on phones */
+    .landing-image {
+      order: 5 !important;
+      position: relative !important;
+      width: min(62vw, 260px) !important;
+      min-width: 0 !important;
+      max-width: 260px !important;
+      margin: 0.35rem auto 0 !important;
+      left: auto !important;
+      bottom: auto !important;
+      transform: none !important;
+      z-index: 6 !important;
+    }
+
+    /* Slightly smaller grid so decorations don't push content */
+    .grid-background { background-size: 26px 26px !important; }
+  }
+
 @keyframes folderClickMobile {
   0% {
     transform: scale(1);
