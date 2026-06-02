@@ -1364,7 +1364,6 @@ img {
 .about-divider {
   width: 100vw;
   padding: 0;
-  margin: 2rem 0 2rem;
   height: 100px;
 
   background:
@@ -1697,7 +1696,7 @@ img {
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
-  background: #FFCCDD;
+  background: #ffe1eb;
   padding: 3rem 4rem 5rem;
   overflow: visible;
   opacity: 0;
@@ -1853,8 +1852,8 @@ img {
 
 /* Variant styles to match attached pastel cards */
 .about-folder-card--pink {
-  background: linear-gradient(180deg, #E6CCFF 0%, #F0D9FF 100%);
-  border-color: rgba(200,150,255,0.6);
+  background: linear-gradient(180deg, #efdffd 0%, #F0D9FF 100%);
+  border-color: rgba(238, 224, 253, 0.473);
   box-shadow: 0 8px 0 rgba(180,120,240,0.15), 0 18px 30px rgba(180,120,240,0.12);
 }
 .about-folder-card--blue {
@@ -2866,10 +2865,54 @@ img {
 .sp-projects {
   /* match hero background vibe */
   background: #fcfaf8 !important;
+  position: relative;
+  overflow: hidden;
 }
 
 .sp-projects.sp-section {
   background: #fcfaf8 !important;
+}
+
+.projects-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.projects-bg-glow {
+  position: absolute;
+  width: 24vmax;
+  height: 24vmax;
+  border-radius: 999px;
+  filter: blur(30px);
+  opacity: 0.55;
+  animation: sp-float-slow 10s ease-in-out infinite;
+}
+
+.projects-bg-glow-1 {
+  left: -10vmax;
+  top: 10vh;
+  background: rgba(232, 165, 188, 0.55);
+}
+
+.projects-bg-glow-2 {
+  right: -12vmax;
+  top: 25vh;
+  background: rgba(153, 192, 121, 0.45);
+  animation-delay: -2s;
+}
+
+.projects-bg-glow-3 {
+  left: 15vw;
+  bottom: -15vmax;
+  background: rgba(129, 166, 197, 0.38);
+  animation-delay: -4s;
+}
+
+.sp-section-inner {
+  position: relative;
+  z-index: 2;
 }
 
 .sp-project-grid {

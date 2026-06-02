@@ -3,6 +3,13 @@
 export default function ProjectsSection() {
   return (
     <section id="projects" className="sp-section sp-projects" aria-label="Projects">
+      {/* Background Glows */}
+      <div className="projects-bg">
+        <div className="projects-bg-glow projects-bg-glow-1" />
+        <div className="projects-bg-glow projects-bg-glow-2" />
+        <div className="projects-bg-glow projects-bg-glow-3" />
+      </div>
+
       <div className="sp-section-inner">
         <h2 className="sp-section-title">Projects</h2>
         <p className="sp-section-subtitle">A few things I have built.</p>
