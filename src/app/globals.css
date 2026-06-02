@@ -632,7 +632,7 @@ img {
 }
 
 /* ==========================================
-   MOBILE DEVICES
+   SMALLER TABS
 ========================================== */
 @media (max-width: 668px) {
   .landing-section {
@@ -734,9 +734,7 @@ img {
   }
 }
 
-/* ==========================================
-   SMALL PHONES
-========================================== */
+
 @media (max-width: 670px) {
   .grid-background {
     background-size: 26px 26px;
@@ -815,9 +813,7 @@ img {
   }
 }
 
-  /* ====== Final mobile safety overrides (force stacking & image size) ======
-     Purpose: ensure the hero, folders, image, and footer stack correctly on
-     all mobile widths (<=767px) and override any earlier rules that conflict.
+  /* ====== Final mobile safety overrides ======
   ======================================================================= */
   @media (max-width: 767px) {
     .landing-content {
