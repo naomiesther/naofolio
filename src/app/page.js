@@ -3,7 +3,7 @@ import HeroSection from "@/components/HeroSection";
 import PortfolioNavbar from "@/components/PortfolioNavbar";
 
 import ProjectsSection from "@/components/ProjectsSection";
-import ContactSection from "@/components/ContactSection";
+import GallerySection from "@/components/GallerySection";
 import SiteFooter from "@/components/SiteFooter";
 
 export default function Home() {
@@ -28,7 +28,7 @@ export default function Home() {
         {/* Divider between Projects and Gallery */}
         <div className="stripe-divider stripe-divider--about-projects" aria-hidden="true" />
 
-        <ContactSection />
+        <GallerySection />
       </main>
 
       <SiteFooter />

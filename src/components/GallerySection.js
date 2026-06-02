@@ -19,41 +19,54 @@ const galleryItems = [
   {
     title: "Wolf of the Month",
     image: "/assets/images/gallery/CCS_Wolf-of-the-Month.png",
+    variant: "lavender",
   },
   {
     title: "TechTrack: Mapping Your Future in Tech",
     image: "/assets/images/gallery/CCS_TechTrack_Mapping-Your-Future-in-Tech.png",
+    variant: "sky",
   },
   {
     title: "Commandline: Leaders in the Making",
     image: "/assets/images/gallery/CCS_Commandline_Leaders-in-the-Making.png",
+    variant: "mint",
   },
   {
     title: "Council General Assembly",
     image: "/assets/images/gallery/CCS_Council General Assembly.png",
+    variant: "peach",
   },
   {
     title: "Reboot Exam Ready-Set-Go Kits",
     image: "/assets/images/gallery/CCS Reboot Exam Ready-Set-Go Kits.png",
+    variant: "butter",
   },
   {
     title: "General Assembly",
     image: "/assets/images/gallery/CCS General Assembly.png",
+    variant: "rose",
   },
 ];
 
-export default function ContactSection() {
+export default function GallerySection() {
   useScrollReveal();
   const [selectedItem, setSelectedItem] = useState(null);
 
   return (
-    <section id="contact" className="sp-section sp-contact" aria-label="More Creative Work">
+    <section id="gallery" className="sp-section sp-gallery" aria-label="More Creative Work">
+      {/* Background Glows */}
+      <div className="gallery-bg">
+        <div className="gallery-bg-glow gallery-bg-glow-1" />
+        <div className="gallery-bg-glow gallery-bg-glow-2" />
+        <div className="gallery-bg-glow gallery-bg-glow-3" />
+      </div>
+
       <div className="sp-section-inner">
         <div className="sp-section-entrance sp-gallery-entrance" aria-hidden="true" />
 
         <div className="sp-reveal-grid sp-reveal-text" aria-label="Gallery header">
           <h2 className="sp-section-title wave-title sp-gallery-header sp-reveal-item">
-            {renderRippleLetters("More Creative Work", "gallery")}
+            {renderRippleLetters("Gallery", "gallery")}
           </h2>
           <p className="sp-section-subtitle sp-reveal-item">A selection of pubmats I have designed and edited.</p>
         </div>
@@ -62,7 +75,7 @@ export default function ContactSection() {
           {galleryItems.map((item, index) => (
             <article
               key={item.title}
-              className="sp-gallery-item sp-reveal-item"
+              className={`sp-gallery-item sp-reveal-item sp-gallery-item--${item.variant}`}
               style={{ ["--card-index"]: index }}
               onClick={() => setSelectedItem(item)}
             >
