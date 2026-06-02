@@ -1,12 +1,7 @@
-import LandingSection from "@/components/LandingSection";
+import SinglePagePortfolio from "@/components/SinglePagePortfolio";
 
 export default function Home() {
   return (
-    <main>
-      {/* =========================
-        LANDING SECTION
-      ========================== */}
-      <LandingSection />
-    </main>
+    <SinglePagePortfolio />
   );
 }
