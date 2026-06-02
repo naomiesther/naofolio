@@ -20,6 +20,7 @@ const SKILLS = [
 const FOLDER_CARDS = [
   {
     title: "Education",
+    icon: "/assets/icons/education.png",
     kind: "education",
     variant: "pink",
     details: [
@@ -46,6 +47,7 @@ const FOLDER_CARDS = [
   },
   {
     title: "Experience",
+    icon: "/assets/icons/experience.png",
     kind: "experience",
     variant: "blue",
     details: [
@@ -57,6 +59,7 @@ const FOLDER_CARDS = [
   },
   {
     title: "Expertise",
+    icon: "/assets/icons/expertise.png",
     kind: "expertise",
     variant: "green",
     details: [
@@ -252,7 +255,7 @@ export default function AboutSection() {
 
                 <div className="about-folder-card-head">
                   <img
-                    src={`/assets/icons/${card.title}.png`}
+                    src={card.icon}
                     alt=""
                     aria-hidden="true"
                     className="about-folder-title-icon"

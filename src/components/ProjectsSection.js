@@ -1,7 +1,5 @@
 "use client";
 
-import Image from "next/image";
-
 function renderRippleLetters(text, prefix) {
   return text.split("").map((ch, index) => (
     <span
@@ -52,14 +50,12 @@ export default function ProjectsSection() {
             <article key={p.title} className="sp-project-card">
               <a href={p.link} target="_blank" rel="noopener noreferrer" className="sp-project-thumb-link">
                 <div className="sp-project-thumb">
-                  <Image
+                  <img
                     src={p.image}
                     alt={p.title}
-                    fill
                     className="sp-project-image"
-                    onError={(e) => {
-                      e.currentTarget.style.display = "none";
-                    }}
+                    loading="lazy"
+                    draggable="false"
                   />
                 </div>
               </a>
