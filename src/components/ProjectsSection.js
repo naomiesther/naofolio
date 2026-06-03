@@ -24,6 +24,9 @@ export default function ProjectsSection() {
         <div className="projects-bg-glow projects-bg-glow-1" />
         <div className="projects-bg-glow projects-bg-glow-2" />
         <div className="projects-bg-glow projects-bg-glow-3" />
+        <div className="projects-bg-glow projects-bg-glow-4" />
+        <div className="projects-bg-glow projects-bg-glow-5" />
+        <div className="projects-bg-glow projects-bg-glow-6" />
       </div>
 
       <div className="sp-section-inner">

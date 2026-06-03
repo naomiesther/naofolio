@@ -10,18 +10,6 @@ export default function HeroSection() {
       </div>
 
       <div className="hero-inner">
-        <p className="hero-sub" aria-label="Welcome to my cozy portfolio">
-          {"Welcome to my cozy portfolio".split("").map((ch, index) => (
-            <span
-              key={`hero-sub-${index}`}
-              className="ripple-letter hero-sub-ripple"
-              style={{ ["--i"]: index }}
-            >
-              {ch === " " ? "\u00A0" : ch}
-            </span>
-          ))}
-        </p>
-
         <h1 className="hero-title" aria-label="Hi, this is Nao">
           <span className="hero-title-phrase">
             {"Hi, this is".split("").map((ch, index) => (
@@ -44,6 +32,30 @@ export default function HeroSection() {
             />
           </span>
         </h1>
+
+        <p className="hero-sub" aria-label="Welcome to my little corner of the internet">
+          {"welcome to my little corner of the internet".split("").map((ch, index) => (
+            <span
+              key={`hero-sub-${index}`}
+              className="ripple-letter"
+              style={{ ["--i"]: index }}
+            >
+              {ch === " " ? "\u00A0" : ch}
+            </span>
+          ))}
+        </p>
+
+        <p className="hero-tagline" aria-label="crafting digital spaces where aesthetics and usability can coexist peacefully">
+          {"crafting digital spaces where aesthetics and usability can coexist peacefully. ✿".split("").map((ch, index) => (
+            <span
+              key={`hero-tagline-${index}`}
+              className="hero-tagline-char"
+              style={{ ["--i"]: index }}
+            >
+              {ch === " " ? "\u00A0" : ch}
+            </span>
+          ))}
+        </p>
 
         <div className="hero-cta-row">
           <button

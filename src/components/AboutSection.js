@@ -2,19 +2,23 @@
 
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const SKILLS = [
+  { src: "/assets/icons/javascript.png", alt: "JavaScript" },
+  { src: "/assets/icons/java.png", alt: "Java" },
+  { src: "/assets/icons/php.png", alt: "PHP" },
   { src: "/assets/icons/figma.png", alt: "Figma" },
+  { src: "/assets/icons/nextjs.png", alt: "Next.js" },
   { src: "/assets/icons/html.png", alt: "HTML5" },
   { src: "/assets/icons/css.png", alt: "CSS3" },
-  { src: "/assets/icons/javascript.png", alt: "JavaScript" },
-  { src: "/assets/icons/php.png", alt: "PHP" },
   { src: "/assets/icons/mysql.png", alt: "MySQL" },
-  { src: "/assets/icons/canva.png", alt: "Canva" },
-  { src: "/assets/icons/photoshop.png", alt: "Adobe Photoshop" },
+  { src: "/assets/icons/github.png", alt: "GitHub" },
+  { src: "/assets/icons/notion.png", alt: "Notion" },
   { src: "/assets/icons/premiere.png", alt: "Adobe Premiere Pro" },
+  { src: "/assets/icons/photoshop.png", alt: "Adobe Photoshop" },
   { src: "/assets/icons/audition.png", alt: "Adobe Audition" },
+  { src: "/assets/icons/canva.png", alt: "Canva" },
 ];
 
 const FOLDER_CARDS = [
@@ -108,7 +112,7 @@ export default function AboutSection() {
   const router = useRouter();
   const sectionRef = useRef(null);
   const folderSectionRef = useRef(null);
-
+  const skillsSliderRef = useRef(null);
 
   const handleBack = () => {
     document.body.classList.add("is-navigating");
@@ -116,6 +120,38 @@ export default function AboutSection() {
     window.setTimeout(() => {
       router.back();
     }, 300);
+  };
+
+  /* =========================
+  UPDATED SLIDER (FIXED)
+  ========================= */
+  const [isAtEnd, setIsAtEnd] = useState(false);
+
+  const ICON_SIZE = 58;
+  const GAP = 20;
+  const PER_PAGE = 8;
+  const ITEM_WIDTH = ICON_SIZE + GAP;
+
+  const handleScrollSkills = () => {
+    const slider = skillsSliderRef.current;
+    if (!slider) return;
+
+    const currentScroll = slider.scrollLeft;
+    const maxScroll = Math.max(slider.scrollWidth - slider.clientWidth, 0);
+
+    if (maxScroll - currentScroll <= 1) {
+      const target = Math.max(currentScroll - ITEM_WIDTH * PER_PAGE, 0);
+      slider.scrollTo({ left: target, behavior: "smooth" });
+    } else {
+      slider.scrollTo({ left: currentScroll + ITEM_WIDTH * PER_PAGE, behavior: "smooth" });
+    }
+  };
+
+  const updateAtEnd = () => {
+    const slider = skillsSliderRef.current;
+    if (!slider) return;
+    const maxScroll = Math.max(slider.scrollWidth - slider.clientWidth, 0);
+    setIsAtEnd(slider.scrollLeft >= maxScroll - 1);
   };
 
   useEffect(() => {
@@ -189,11 +225,11 @@ export default function AboutSection() {
 
             {/* Resume Download Button */}
             <a
-              href="/assets/files/Naomi-Liu-Resume.pdf"
+              href="/LIU-Naomi_resume.pdf"
               className="resume-button"
               download
             >
-              download resume
+              Download Resume
             </a>
           </div>
 
@@ -229,18 +265,37 @@ export default function AboutSection() {
             {/* Technical Skills Header */}
             <h2 className="technical-skills-header">Technical Skills</h2>
 
-            {/* Skills Logos */}
-            <div className="skills-logos">
-              {SKILLS.map((skill) => (
-                <img
-                  key={skill.src}
-                  src={skill.src}
-                  alt={skill.alt}
-                  className="skill-logo"
-                  loading="lazy"
-                  draggable="false"
-                />
-              ))}
+            {/* =========================
+            SKILLS SLIDER (FIXED)
+            ========================= */}
+            <div className="skills-slider">
+              <div className="skills-slider-viewport">
+                <div
+                  className="skills-slider-track"
+                  ref={skillsSliderRef}
+                  onScroll={updateAtEnd}
+                >
+                  {SKILLS.map((skill) => (
+                    <img
+                      key={skill.src}
+                      src={skill.src}
+                      alt={skill.alt}
+                      className="skill-logo"
+                      loading="lazy"
+                      draggable="false"
+                    />
+                  ))}
+                </div>
+              </div>
+
+              <button
+                type="button"
+                className={`skills-nav ${isAtEnd ? "skills-nav--rewind" : ""}`}
+                aria-label={isAtEnd ? "Previous skills" : "Next skills"}
+                onClick={handleScrollSkills}
+              >
+                {isAtEnd ? "‹" : "›"}
+              </button>
             </div>
           </div>
         </div>

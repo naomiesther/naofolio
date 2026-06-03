@@ -3,15 +3,17 @@
 export default function SiteFooter() {
   return (
     <footer className="sp-site-footer" aria-label="Site footer">
+      {/* Background Glows */}
+      <div className="footer-bg-glow" aria-hidden="true" />
+      <div className="footer-bg-glow-2" aria-hidden="true" />
+      
       <div className="sp-site-footer-inner">
         <div className="footer-content">
           <div className="footer-left">
             <p className="footer-name">Naomi Esther Liu</p>
             <p className="footer-role">UI/UX Designer / Web Developer</p>
             <p className="footer-email">liunaomiesther@gmail.com</p>
-            <a href="/assets/files/Naomi-Liu-Resume.pdf" className="resume-button" download>
-              Download Resume
-            </a>
+            <p className="footer-location">Bacolod City, 6100 PH</p>
           </div>
 
           <nav className="footer-links" aria-label="Quick links">
