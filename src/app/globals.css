@@ -1181,7 +1181,7 @@ TECHNICAL SKILLS SLIDER
   flex-wrap: nowrap;
   overflow-x: auto;
   overflow-y: hidden;
-  padding: 0.75rem 0;
+  padding: 0.75rem 0.5rem;
   gap: var(--skill-gap);
   scroll-behavior: smooth;
   scrollbar-width: none;
@@ -1279,6 +1279,22 @@ TECHNICAL SKILLS SLIDER
   .skill-logo {
     width: 48px;
     height: 48px;
+  }
+
+  .skills-nav {
+    display: none;
+  }
+
+  :root {
+    --skill-visible-count: 5;
+  }
+
+  .skills-slider-viewport {
+    padding: 0 0.6rem;
+  }
+
+  .skills-slider-track {
+    gap: 1rem;
   }
 }
 
