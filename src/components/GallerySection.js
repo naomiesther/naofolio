@@ -53,7 +53,7 @@ export default function GallerySection() {
 
         <div className="sp-reveal-grid sp-reveal-text" aria-label="Gallery header">
           <h2 className="sp-section-title wave-title sp-gallery-header sp-reveal-item">
-            {renderRippleLetters("Creative Gallery", "gallery")}
+            {renderRippleLetters("my creative works", "gallery")}
           </h2>
           <p className="sp-section-subtitle sp-reveal-item">A selection of pubmats I have designed and edited.</p>
         </div>

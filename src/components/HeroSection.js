@@ -37,13 +37,17 @@ export default function HeroSection() {
         </h1>
 
         <p className="hero-sub" aria-label="Welcome to my little corner of the internet">
-          {"welcome to my little corner of the internet".split("").map((ch, index) => (
-            <span
-              key={`hero-sub-${index}`}
-              className="ripple-letter"
-              style={{ ["--i"]: index }}
-            >
-              {ch === " " ? "\u00A0" : ch}
+          {"welcome to my little corner of the internet".split(" ").map((word, wIndex) => (
+            <span className="hero-word" key={`welcome-${wIndex}`}>
+              {word.split("").map((ch, cIndex) => (
+                <span
+                  key={`hero-sub-${wIndex}-${cIndex}`}
+                  className="ripple-letter"
+                  style={{ ["--i"]: wIndex * 4 + cIndex }}
+                >
+                  {ch}
+                </span>
+              ))}
             </span>
           ))}
         </p>

@@ -34,7 +34,7 @@ export default function ProjectsSection() {
 
         <div className="sp-reveal-grid sp-reveal-text" aria-label="Projects header">
           <h2 className="sp-section-title wave-title sp-projects-header sp-reveal-item">
-            {renderRippleLetters("Projects", "projects")}
+            {renderRippleLetters("my projects", "projects")}
           </h2>
           <p className="sp-section-subtitle sp-reveal-item">A few things I have built.</p>
         </div>

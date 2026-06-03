@@ -1842,13 +1842,7 @@ TECHNICAL SKILLS SLIDER
 
 .hero-word {
   display: inline-block;
-  white-space: nowrap;
-}
-
-@media (max-width: 480px) {
-  .hero-word {
-    display: block;
-  }
+  margin-right: 0.3em;
 }
 
 @keyframes heroTaglineReveal {
