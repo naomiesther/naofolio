@@ -969,6 +969,8 @@ img {
   .technical-skills-header {
     justify-content: center;
     text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 0.4rem;
   }
 
   .about-description {
@@ -1260,7 +1262,7 @@ TECHNICAL SKILLS SLIDER
 
 .skills-slider {
   position: relative;
-  margin: 0.25rem 0 0;
+  margin: 0.1rem 0 0;
 
   display: flex;
   align-items: center;
@@ -1385,12 +1387,38 @@ TECHNICAL SKILLS SLIDER
     --skill-visible-count: 5;
   }
 
-  .skills-slider-viewport {
-    padding: 0 0.6rem;
+  /* Full-width viewport so the marquee loops across the whole screen */
+  .skills-slider {
+    gap: 0;
+    margin: 0 0 2.5rem;
   }
 
+  .skills-slider-viewport {
+    width: 100%;
+    padding: 0 0.5rem;
+  }
+
+  /* Real-scroll marquee (JS-driven scrollLeft) so swipe/drag works natively */
   .skills-slider-track {
-    gap: 1rem;
+    padding: 0;
+    margin: 0;
+    cursor: grab;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x;
+  }
+
+  .skills-slider-track:active {
+    cursor: grabbing;
+  }
+}
+
+@keyframes skillsMarquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
   }
 }
 
@@ -2834,6 +2862,10 @@ TECHNICAL SKILLS SLIDER
   text-align: center;
 }
 
+.footer-loc {
+  display: inline;
+}
+
 /* ---------------- Footer Mobile Responsiveness ---------------- */
 @media (max-width: 1024px) {
   /* Gradually reduce spacing as screen gets smaller */
@@ -2954,6 +2986,10 @@ TECHNICAL SKILLS SLIDER
   
   .footer-copy {
     font-size: 0.7rem;
+  }
+
+  .footer-loc {
+    display: block;
   }
 }
 

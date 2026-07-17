@@ -44,9 +44,8 @@ export default function SiteFooter() {
 
         <div className="footer-bottom">
           <p className="footer-copy">
-            © {new Date().getFullYear()} Naomi Liu. All rights reserved.
-            <br />
-            Bacolod City, Negros Occidental, PH
+            © {new Date().getFullYear()} Naomi Liu. All rights reserved.{" "}
+            <span className="footer-loc">Bacolod City, Negros Occidental, PH</span>
           </p>
         </div>
       </div>

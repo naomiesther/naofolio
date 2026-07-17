@@ -172,6 +172,47 @@ export default function AboutSection() {
     return () => observer.disconnect();
   }, []);
 
+  /* Mobile marquee: drive scrollLeft directly so native swipe/drag keeps working.
+     Pauses while the user is interacting. */
+  useEffect(() => {
+    const slider = skillsSliderRef.current;
+    if (!slider) return;
+    if (window.matchMedia("(min-width: 769px)").matches) return;
+
+    let rafId;
+    let paused = false;
+    let last = performance.now();
+
+    const onDown = () => { paused = true; };
+    const onUp = () => { paused = false; last = performance.now(); };
+
+    slider.addEventListener("pointerdown", onDown);
+    slider.addEventListener("pointerup", onUp);
+    slider.addEventListener("pointercancel", onUp);
+    slider.addEventListener("pointerleave", onUp);
+
+    const step = (now) => {
+      const dt = now - last;
+      last = now;
+      if (!paused) {
+        const half = slider.scrollWidth / 2;
+        let next = slider.scrollLeft + (dt * 0.03); // ~30px per second
+        if (next >= half) next -= half;
+        slider.scrollLeft = next;
+      }
+      rafId = requestAnimationFrame(step);
+    };
+    rafId = requestAnimationFrame(step);
+
+    return () => {
+      cancelAnimationFrame(rafId);
+      slider.removeEventListener("pointerdown", onDown);
+      slider.removeEventListener("pointerup", onUp);
+      slider.removeEventListener("pointercancel", onUp);
+      slider.removeEventListener("pointerleave", onUp);
+    };
+  }, []);
+
 
   useEffect(() => {
     const folderSection = folderSectionRef.current;
@@ -275,9 +316,9 @@ export default function AboutSection() {
                   ref={skillsSliderRef}
                   onScroll={updateAtEnd}
                 >
-                  {SKILLS.map((skill) => (
+                  {[...SKILLS, ...SKILLS].map((skill, i) => (
                     <img
-                      key={skill.src}
+                      key={`${skill.src}-${i}`}
                       src={skill.src}
                       alt={skill.alt}
                       className="skill-logo"
