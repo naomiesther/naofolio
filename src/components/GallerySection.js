@@ -70,28 +70,21 @@ const galleryItemsExtra = [
   },
 ];
 
-const galleryGroups = [
-  {
-    items: galleryItems,
-  },
-  {
-    items: galleryItemsExtra,
-  },
-];
-
 export default function GallerySection() {
   useScrollReveal();
   const [selectedItem, setSelectedItem] = useState(null);
-  const [groupIndex, setGroupIndex] = useState(0);
 
-  const group = galleryGroups[groupIndex];
+  const PER_PAGE = 6;
+  const allItems = [...galleryItems, ...galleryItemsExtra];
+  const totalPages = Math.ceil(allItems.length / PER_PAGE);
+
+  const [page, setPage] = useState(0);
+  const goPrev = () => setPage((p) => (p - 1 + totalPages) % totalPages);
+  const goNext = () => setPage((p) => (p + 1) % totalPages);
+
+  const items = allItems.slice(page * PER_PAGE, page * PER_PAGE + PER_PAGE);
 
   const [gridRef, gridIn] = useInView();
-
-  const goPrev = () =>
-    setGroupIndex((i) => (i - 1 + galleryGroups.length) % galleryGroups.length);
-  const goNext = () =>
-    setGroupIndex((i) => (i + 1) % galleryGroups.length);
 
   return (
     <section id="gallery" className="sp-section sp-gallery" aria-label="Creative Gallery">
@@ -109,14 +102,25 @@ export default function GallerySection() {
         </div>
 
         <div className="sp-carousel-stage">
-          <button
-            type="button"
-            className="sp-carousel-arrow sp-carousel-arrow-side sp-carousel-arrow-prev"
-            onClick={goPrev}
-            aria-label="Previous creative works"
-          >
-            <span aria-hidden="true">←</span>
-          </button>
+          <div className="sp-carousel-nav">
+            <button
+              type="button"
+              className="sp-carousel-arrow sp-carousel-arrow-side sp-carousel-arrow-prev"
+              onClick={goPrev}
+              aria-label="Previous creative works"
+            >
+              <span aria-hidden="true">←</span>
+            </button>
+
+            <button
+              type="button"
+              className="sp-carousel-arrow sp-carousel-arrow-side sp-carousel-arrow-next"
+              onClick={goNext}
+              aria-label="Next creative works"
+            >
+              <span aria-hidden="true">→</span>
+            </button>
+          </div>
 
           <div
             ref={gridRef}
@@ -124,9 +128,9 @@ export default function GallerySection() {
               "sp-gallery-grid sp-carousel-grid" + (gridIn ? " is-in" : "")
             }
             aria-label="Gallery items"
-            key={groupIndex}
+            key={page}
           >
-            {group.items.map((item, index) => (
+            {items.map((item, index) => (
               <img
                 key={item.title}
                 src={item.image}
@@ -139,15 +143,6 @@ export default function GallerySection() {
               />
             ))}
           </div>
-
-          <button
-            type="button"
-            className="sp-carousel-arrow sp-carousel-arrow-side sp-carousel-arrow-next"
-            onClick={goNext}
-            aria-label="Next creative works"
-          >
-            <span aria-hidden="true">→</span>
-          </button>
         </div>
       </div>
 

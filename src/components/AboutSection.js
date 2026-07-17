@@ -56,7 +56,7 @@ const FOLDER_CARDS = [
     variant: "blue",
     details: [
       { role: "Full-Stack Developer", years: "2026", company: "Sakada Cafe and Autodocs Car Services" },
-      { role: "Web Developer Intern", years: "January – April 2026", company: "USLS Center for Marketing and Communications" },
+        { role: "Web Developer Intern", years: "Jan – Apr 2026", company: "USLS Center for Marketing and Communications" },
       { role: "Governor", years: "2025 – 2026", company: "USLS College of Computing Studies Council" },
       { role: "Executive President", years: "2023 – 2024", company: "Information Technology Society – USLS" },
     ],

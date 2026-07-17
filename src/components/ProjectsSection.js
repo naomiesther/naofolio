@@ -51,7 +51,7 @@ function ProjectCard({ p, index }) {
         rel="noopener noreferrer"
         aria-label={`View ${p.title}`}
       >
-        View <span aria-hidden="true">→</span>
+        View <span className="sp-project-link-arrow" aria-hidden="true">→</span>
       </a>
     </article>
   );
@@ -163,14 +163,25 @@ export default function ProjectsSection() {
         </div>
 
         <div className="sp-carousel-stage">
-          <button
-            type="button"
-            className="sp-carousel-arrow sp-carousel-arrow-side sp-carousel-arrow-prev"
-            onClick={goPrev}
-            aria-label="Previous projects"
-          >
-            <span aria-hidden="true">←</span>
-          </button>
+          <div className="sp-carousel-nav">
+            <button
+              type="button"
+              className="sp-carousel-arrow sp-carousel-arrow-side sp-carousel-arrow-prev"
+              onClick={goPrev}
+              aria-label="Previous projects"
+            >
+              <span aria-hidden="true">←</span>
+            </button>
+
+            <button
+              type="button"
+              className="sp-carousel-arrow sp-carousel-arrow-side sp-carousel-arrow-next"
+              onClick={goNext}
+              aria-label="Next projects"
+            >
+              <span aria-hidden="true">→</span>
+            </button>
+          </div>
 
           <div
             ref={gridRef}
@@ -184,15 +195,6 @@ export default function ProjectsSection() {
               <ProjectCard key={p.title} p={p} index={idx} />
             ))}
           </div>
-
-          <button
-            type="button"
-            className="sp-carousel-arrow sp-carousel-arrow-side sp-carousel-arrow-next"
-            onClick={goNext}
-            aria-label="Next projects"
-          >
-            <span aria-hidden="true">→</span>
-          </button>
         </div>
       </div>
     </section>

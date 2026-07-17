@@ -2,7 +2,7 @@
 
 export default function HeroSection() {
   const welcomeWords = "welcome to my little corner of the internet".split(" ");
-  const subtitleChars = "crafting digital spaces where aesthetics and usability can coexist peacefully. ✿".split("");
+  const subtitleWords = "crafting digital spaces where aesthetics and usability can coexist peacefully. ✿".split(" ");
 
   return (
     <section id="home" className="hero" aria-label="Hero">
@@ -53,13 +53,17 @@ export default function HeroSection() {
         </p>
 
         <p className="hero-tagline" aria-label="crafting digital spaces where aesthetics and usability can coexist peacefully">
-          {subtitleChars.map((ch, index) => (
-            <span
-              key={`hero-tagline-${index}`}
-              className="hero-tagline-char"
-              style={{ ["--i"]: index }}
-            >
-              {ch === " " ? "\u00A0" : ch}
+          {subtitleWords.map((word, wIndex) => (
+            <span className="hero-tagline-word" key={`hero-tagline-${wIndex}`}>
+              {word.split("").map((ch, cIndex) => (
+                <span
+                  key={`hero-tagline-ch-${wIndex}-${cIndex}`}
+                  className="hero-tagline-char"
+                  style={{ ["--i"]: wIndex * 8 + cIndex }}
+                >
+                  {ch}
+                </span>
+              ))}
             </span>
           ))}
         </p>
